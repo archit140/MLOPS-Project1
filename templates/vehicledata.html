@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Insurance Predictor</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vehicle Insurance Predictor</h1>
+
+        <!-- Prediction Form -->
+        <form method="post" action="/">
+            <label for="Gender">Gender</label>
+            <select name="Gender" required>
+                <option value="">Select</option>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+
+            <label for="Age">Age</label>
+            <input type="number" name="Age" placeholder="Enter your age" required>
+
+            <label for="Driving_License">Driving License</label>
+            <select name="Driving_License" required>
+                <option value="">Select</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="Region_Code">Region Code</label>
+            <input type="number" step="0.1" name="Region_Code" placeholder="e.g., 28.0" required>
+
+            <label for="Previously_Insured">Previously Insured</label>
+            <select name="Previously_Insured" required>
+                <option value="">Select</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="Annual_Premium">Annual Premium</label>
+            <input type="number" name="Annual_Premium" placeholder="e.g., 30000" required>
+
+            <label for="Policy_Sales_Channel">Policy Sales Channel</label>
+            <input type="number" step="0.1" name="Policy_Sales_Channel" placeholder="e.g., 152.0" required>
+
+            <label for="Vintage">Vintage (Customer Loyalty in Days)</label>
+            <input type="number" name="Vintage" placeholder="e.g., 250" required>
+
+            <label for="Vehicle_Age_lt_1_Year">Vehicle Age &lt; 1 Year</label>
+            <select name="Vehicle_Age_lt_1_Year" required>
+                <option value="">Select</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="Vehicle_Age_gt_2_Years">Vehicle Age &gt; 2 Years</label>
+            <select name="Vehicle_Age_gt_2_Years" required>
+                <option value="">Select</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="Vehicle_Damage_Yes">Vehicle Damage</label>
+            <select name="Vehicle_Damage_Yes" required>
+                <option value="">Select</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Train Model Button -->
+        <form method="get" action="/train">
+            <button type="submit" class="train-button">Train Model</button>
+        </form>
+
+        <!-- Display Prediction Result -->
+        {% if context %}
+        <div class="result">
+            <h2>{{ context }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
